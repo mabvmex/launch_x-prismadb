@@ -45,8 +45,38 @@ const prisma = new PrismaClient();
       },
     });
 
+
+  
+
+    const student0 = await prisma.student.upsert({
+        where: { name: 'WoopaStudent-0' },
+        update: {},
+        create: {
+          name: 'WooSt-0',
+                  name: 'ajoloStudent0',
+                  lang: 'Spanish',
+                  missionCommander: 'Sherpa1',
+                  enrollments: 2
+        },
+      });
+
+
+
+    const student1 = await prisma.student.upsert({
+        where: { name: 'WoopaStudent-1' },
+        update: {},
+        create: {
+          name: 'WooSt-1',
+                  name: 'ajoloStudent1',
+                  lang: 'Spanish',
+                  missionCommander: 'Sherpa1',
+                  enrollments: 2
+
+        },
+      });
+
     console.log('Create 3 explorers');
-    
+
   } catch(e) {
     console.error(e);
     process.exit(1);
