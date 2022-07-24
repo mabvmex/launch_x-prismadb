@@ -75,43 +75,44 @@ app.get("/estudiantes", async (req, res) => {
     res.json(allEstudiantes);
 });
 
-/*
-app.get("/explorers/:id", async (req, res) => {
+app.get("/estudiantes/:id", async (req, res) => {
     const id = req.params.id;
-    const explorer = await prisma.explorer.findUnique({
+    const estudiante = await prisma.student.findUnique({
         where: { id: parseInt(id) },
     });
-    res.json(explorer);
+    res.json(estudiante);
 });
 
-app.post('/explorers', async (req, res) => {
-    const explorer = {
-      name: req.body.name,
-      username: req.body.username,
-      mission: req.body.mission
-     };
-    const message = 'Explorer creado.';
-    await prisma.explorer.create({data: explorer});
+app.post('/estudiantes', async (req, res) => {
+    const estudiante = {
+        name: req.body.name,
+        lang: req.body.lang,
+        missionCommander: req.body.missionCommander,
+        enrollments: req.body.enrollments
+        
+    };
+    const message = 'Estudiante creado.';
+    await prisma.student.create({data: estudiante});
     return res.json({message});
-  });
+});
 
-  app.put('/explorers/:id', async (req, res) => {
+app.put('/estudiantes/:id', async (req, res) => {
     const id = parseInt(req.params.id);
-    await prisma.explorer.update({
+    await prisma.student.update({
         where: {
             id: id
         },
         data: {
-            mission: req.body.mission
+            missionCommander: req.body.missionCommander
         }
     });
+    
 
     return res.json({message: "Actualizado correctamente"});
   });
 
-  app.delete('/explorers/:id', async (req, res) => {
+  app.delete('/estudiante/:id', async (req, res) => {
     const id = parseInt(req.params.id);
-    await prisma.explorer.delete({where: {id: id}});
+    await prisma.student.delete({where: {id: id}});
     return  res.json({message: "Eliminado correctamente"});
   });
-*/
